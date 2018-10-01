@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    title Authorisation
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top(role='navigation')(style='background-color: #003366;')
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              span.sr-only Toggle nav
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(style='background-color: #006666;color:floralwhite;')(href='#') Authorisation System
+          .container
+            .navbar-collapse.collapse
+              ul.nav.navbar-nav.navbar-right
+               if !user
+                li(class=(title == 'Login' ? 'active' : ''))
+                 a(href='/users/login') Login
+               if user
+                li
+                 a(href='/users/logout') Logout
+                li(class=(title == 'Members' ? 'active' : ''))
+                 a(href='/') Members
+    .container(class=(title != 'Register' ? 'lineheight' : 'lb'))
+     != messages()
+     block content
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='javascripts/bootstrap.js')
